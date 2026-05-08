@@ -1,195 +1,133 @@
-# College Discovery Platform
+# 🎓 College Discovery Platform
 
-A production-grade MVP for discovering, comparing, and evaluating colleges using modern web technologies.
+A production-grade MVP for discovering, comparing, and evaluating colleges built using modern full-stack technologies.
 
-Inspired by platforms like:
-- Careers360
-- Collegedunia
-
-Built with:
-- Next.js 15
-- TypeScript
-- Tailwind CSS
-- Prisma ORM
-- Supabase PostgreSQL
-
+🌐 **Live Demo:** https://collegediscoveryplatform-production-0f4f.up.railway.app/  
 ---
 
-# Features
+# 🚀 Features
 
-## 1. College Listing + Search
+## 🔍 College Listing & Search
 
-- Fast searchable college directory
-- Search by:
-  - College name
-- Filters:
+- Browse colleges with a clean and responsive UI
+- Search colleges by name
+- Filter colleges by:
   - Location
   - Course
-  - Exam
-  - College type
-- Pagination support
-- Responsive UI
-- Server-side data fetching
+- Pagination / optimized data loading
+- Fast and user-friendly experience
 
 ---
 
-## 2. College Detail Page
+## 🏫 College Detail Page
 
-Detailed college profiles including:
+Detailed information for each college including:
 
-- Overview
-- Fees
-- Courses offered
+### Overview
+- College information
+- Fees structure
 - Ratings
-- Placement statistics
-- Recruiters
-- Accepted exams
-- Highlights
-- Ownership details
-
----
-
-## 3. Compare Colleges
-
-Compare 2–3 colleges side-by-side.
-
-Comparison includes:
-- Fees
-- Placement %
-- Rating
 - Location
-- Packages
-- Ownership
+
+### Sections
+- Courses Offered
+- Placements Information
+- Additional college details
 
 ---
 
-## 4. College Predictor Tool
+## ⚖️ Compare Colleges (High Priority Feature)
 
-Predict eligible colleges based on:
-- Exam
+Compare 2–3 colleges side-by-side with:
+
+- Fees
+- Placement Percentage
+- Ratings
+- Location
+- Key metrics comparison table
+
+---
+
+## 📈 College Predictor Tool
+
+Predict colleges based on:
+
+### Inputs
+- Exam name (e.g., JEE)
 - Rank
 
-Supports:
-- JEE
-- BITSAT
-- GATE
-- Other entrance exams
-
-Returns:
-- Matching colleges
-- Fallback recommendations
+### Output
+- Recommended colleges list
 
 ---
 
-# Tech Stack
+# 🛠️ Tech Stack
 
 ## Frontend
-
-- Next.js App Router
-- React
+- Next.js
 - TypeScript
 - Tailwind CSS
 
 ## Backend
-
-- Next.js Route Handlers
+- Next.js API Routes
 - Prisma ORM
-- PostgreSQL
 
 ## Database
-
-- Supabase PostgreSQL
-
-## Deployment
-
-Recommended:
-- Vercel
+- PostgreSQL
 - Supabase
 
+## Deployment
+- Railway (Frontend + Backend)
+
 ---
 
-# Project Structure
+# 🧱 System Architecture
+
+```text
+Client (Next.js + Tailwind)
+        ↓
+API Layer (Next.js API Routes)
+        ↓
+Prisma ORM
+        ↓
+Supabase PostgreSQL Database
+```
+
+---
+
+# 📂 Project Structure
 
 ```bash
-src/
-├── app/
-│   ├── api/
-│   ├── colleges/
-│   ├── compare/
-│   ├── predictor/
-│   └── components/
+College_Discovery_Platform/
 │
-├── lib/
-│   ├── prisma.ts
-│   ├── utils.ts
-│   └── college-service.ts
+├── prisma/                 # Prisma schema & migrations
+├── public/                 # Static assets
+├── src/
+│   ├── app/                # Next.js App Router
+│   ├── components/         # Reusable UI components
+│   ├── lib/                # Utility functions
+│   ├── services/           # API/data handling
+│   └── styles/             # Global styles
 │
-├── types/
-│   └── college.ts
-│
-prisma/
-├── schema.prisma
+├── .env
+├── package.json
+└── README.md
 ```
 
 ---
 
-# Database Schema
+# ⚙️ Installation & Setup
 
-## College Model
-
-```prisma
-model College {
-  id               String   @id @default(cuid())
-  slug             String   @unique
-  name             String
-  shortName        String
-
-  location         String
-  state            String
-
-  courses          String[]
-
-  fees             Int
-  rating           Float
-
-  placementPercent Int
-  averagePackage   String
-
-  exams            String[]
-
-  closingRanks     Json
-
-  type             String
-  established      Int
-  ownership        String
-
-  overview         String
-
-  highlights       String[]
-
-  topRecruiters    String[]
-
-  medianPackage    String
-  highestPackage   String
-
-  @@map("colleges")
-}
-```
-
----
-
-# Getting Started
-
-## 1. Clone Repository
+## 1️⃣ Clone Repository
 
 ```bash
-git clone <your-repo-url>
-cd college-discovery-platform
+git clone https://github.com/UditSingh1893/College_Discovery_Platform.git
+cd College_Discovery_Platform
 ```
 
 ---
 
-## 2. Install Dependencies
+## 2️⃣ Install Dependencies
 
 ```bash
 npm install
@@ -197,72 +135,39 @@ npm install
 
 ---
 
-## 3. Configure Environment Variables
+## 3️⃣ Setup Environment Variables
 
-Create:
-
-```bash
-.env
-```
-
-Add:
+Create a `.env` file in the root directory.
 
 ```env
-DATABASE_URL="your_supabase_pooling_url"
-DIRECT_URL="your_supabase_direct_url"
+DATABASE_URL=your_supabase_postgresql_url
 ```
 
 ---
 
-# Supabase Setup
+## 4️⃣ Prisma Setup
 
-## 1. Create Project
-
-Go to:
-https://supabase.com
-
-Create a new project.
-
----
-
-## 2. Get Database URLs
-
-Inside:
-- Project Settings
-- Database
-- Connection String
-
-Copy:
-- Transaction Pooler URL → DATABASE_URL
-- Direct Connection URL → DIRECT_URL
-
----
-
-# Prisma Setup
-
-## Generate Prisma Client
+Generate Prisma client:
 
 ```bash
 npx prisma generate
 ```
 
----
-
-## Push Schema
+Run migrations:
 
 ```bash
-npx prisma db push
+npx prisma migrate dev
 ```
 
 ---
 
-# Run Development Server
+## 5️⃣ Start Development Server
 
 ```bash
 npm run dev
 ```
 
-Open:
+App will run on:
 
 ```bash
 http://localhost:3000
@@ -270,132 +175,66 @@ http://localhost:3000
 
 ---
 
-# API Routes
+# 🗄️ Database
 
-## Colleges
+This project uses:
 
-```bash
-GET /api/colleges
-```
-
-Supports:
-- search
-- location
-- course
-- exam
-- type
-- pagination
-- sorting
-
-Example:
-
-```bash
-/api/colleges?search=iit&location=Delhi
-```
+- **PostgreSQL** as the primary database
+- **Supabase** for managed database hosting
+- **Prisma ORM** for type-safe database access
 
 ---
 
-## College Filters
+# 📸 Core Functionalities
 
-```bash
-GET /api/colleges/filters
-```
+##  College Search
+Efficient filtering and searching experience with dynamic UI updates.
 
-Returns:
-- locations
-- courses
-- exams
-- types
-- ownerships
+##  Comparison Engine
+Compare multiple colleges instantly using structured tabular data.
 
----
+##  Predictor Logic
+Basic recommendation engine based on exam rank and criteria.
 
-## Predictor
-
-```bash
-GET /api/colleges/predict
-```
-
-Example:
-
-```bash
-/api/colleges/predict?exam=JEE&rank=12000
-```
+##  Responsive UI
+Fully responsive interface built with Tailwind CSS.
 
 ---
 
-# Key Features Implemented
+# 🌍 Deployment
 
-- Production-ready API architecture
-- Server-side rendering
-- Dynamic routes
-- Type-safe Prisma queries
-- Optimized filtering
-- Scalable folder structure
-- Reusable utility layer
-- Responsive Tailwind UI
-- Database normalization support
+The application is deployed on **Railway**.
+
+### Deployment Stack
+- Frontend → Railway
+- Backend/API → Railway
+- Database → Supabase PostgreSQL
 
 ---
 
-# Future Improvements
+# 🔮 Future Improvements
 
-## Recommended Enhancements
-
-### Authentication
-- Clerk
-- NextAuth
-
-### Saved Colleges
-- Wishlist
-- Bookmarks
-
-### Reviews System
-- Student reviews
-- Ratings
-
-### Advanced Predictor
-Add:
-- Category
-- Gender
-- Home state
-- Quota system
-
-### Analytics
-- Search trends
-- Popular colleges
-
-### AI Features
-- College recommendation engine
-- Personalized suggestions
+- Authentication & user profiles
+- Saved colleges / wishlist
+- Advanced recommendation engine
+- AI-powered college matching
+- Reviews & ratings system
+- Cutoff analytics
+- College application tracking
+- Admin dashboard
 
 ---
 
-# Deployment
+# 📚 Learning Outcomes
 
-## Vercel
+This project demonstrates:
 
-```bash
-vercel
-```
-
-Add environment variables in:
-- Vercel Dashboard
-- Project Settings
-- Environment Variables
-
----
-
-# Performance Optimizations
-
-- Cached filter APIs
-- Server Components
-- Prisma query optimization
-- Indexed PostgreSQL fields
-- Minimal API payloads
+- Full-stack application architecture
+- Database modeling with Prisma
+- Production deployment workflows
+- Building scalable Next.js applications
+- Backend API development
+- Search/filter optimization
+- Responsive UI/UX design
 
 ---
-
-# Author
-
-Built by Udit Singh
