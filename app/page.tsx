@@ -1,4 +1,6 @@
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { AppShell } from "@/app/components/app-shell";
 import { formatFees } from "@/types/college";

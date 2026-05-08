@@ -1,4 +1,6 @@
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
 import { AppShell } from "@/app/components/app-shell";
 import { CollegeExplorer } from "@/app/components/college-explorer";
 import { getColleges } from "@/lib/college-service";
