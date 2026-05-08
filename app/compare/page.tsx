@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { AppShell } from "@/app/components/app-shell";
 import { CompareTool } from "@/app/components/compare-tool";
 import { getColleges } from "@/lib/college-service";

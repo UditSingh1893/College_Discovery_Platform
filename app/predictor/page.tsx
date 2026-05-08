@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { AppShell } from "@/app/components/app-shell";
 import { PredictorTool } from "@/app/components/predictor-tool";
 import { getColleges } from "@/lib/college-service";
